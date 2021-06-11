@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct HexModel : Codable {
+struct ColorValue : Codable {
     
     let hex : Hex?
     

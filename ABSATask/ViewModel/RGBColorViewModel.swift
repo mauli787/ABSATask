@@ -14,14 +14,18 @@ protocol HexModelDelegate {
  
 struct RGBColorViewModel {
      
-    var delegate: HexModelDelegate?    
+    var delegate: HexModelDelegate?
+    
+    var rColor: String?
+    var gColor: String?
+    var bColor: String?
     
     func getHexValueFromRGB(redColor : String,greenColor:String,blueColor:String){
         let url = Constant.URLS().BaseURL + "id?rgb=\(redColor),\(greenColor),\(blueColor)"
             let weatherURL = URL(string: url)!
-            let weatherResource = Resource<HexModel>(url: weatherURL) { data in
+            let weatherResource = Resource<ColorValue>(url: weatherURL) { data in
             let jsonDecoder = JSONDecoder()
-            let responseModel = try? jsonDecoder.decode(HexModel.self, from: data)
+            let responseModel = try? jsonDecoder.decode(ColorValue.self, from: data)
             return responseModel
         }
         APIManager().loadWebAPI(resource: weatherResource) { [] result in
