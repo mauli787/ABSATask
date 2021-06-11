@@ -15,12 +15,10 @@ struct ColorValue : Codable {
     enum CodingKeys: String, CodingKey {
         case hex = "hex"
     }
-    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         hex = try values.decodeIfPresent(Hex.self, forKey: .hex)
     }
-    
 }
 
 struct Hex : Codable {
@@ -31,7 +29,6 @@ struct Hex : Codable {
         case value = "value"
         case clean = "clean"
     }
-    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         value = try values.decodeIfPresent(String.self, forKey: .value)

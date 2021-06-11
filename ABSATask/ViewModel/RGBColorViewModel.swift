@@ -22,6 +22,7 @@ struct RGBColorViewModel {
     
     func getHexValueFromRGB(redColor : String,greenColor:String,blueColor:String){
         let url = Constant.URLS().BaseURL + "id?rgb=\(redColor),\(greenColor),\(blueColor)"
+        print(url)
             let weatherURL = URL(string: url)!
             let weatherResource = Resource<ColorValue>(url: weatherURL) { data in
             let jsonDecoder = JSONDecoder()
