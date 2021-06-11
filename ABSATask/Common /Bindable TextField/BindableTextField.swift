@@ -16,12 +16,10 @@ class BindableTextField: UITextField {
         super.init(frame: frame)
         commonInit()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
     func bind(callback: @escaping (String) -> ()) {
         self.textChangeClosure = callback
     }
@@ -33,7 +31,7 @@ class BindableTextField: UITextField {
     @objc func textFieldChange(_ textField: UITextField) {
         
         if let text = textField.text {
-             self.textChangeClosure(text)
+            self.textChangeClosure(text)
         }
     }
     
